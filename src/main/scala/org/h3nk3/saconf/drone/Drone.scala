@@ -100,7 +100,7 @@ object Drone extends InputParser with JsonDomain {
   }
 
   def emitPositionAndMetrics: Flow[Message, Message, Any] =
-    // FIXME: Coupled vs Flow
+    // Explain: Coupled vs Flow
     Flow.fromSinkAndSource(
       Sink.foreach(handleCommand),
       Source.tick(initialDelay = 1.second, interval = 3.seconds, tick = NotUsed)

@@ -1,6 +1,6 @@
 import sbt.Keys.libraryDependencies
 
-val project = Project(id = "saconf", base = file("."))enablePlugins (Cinnamon)
+val project = Project(id = "saconf", base = file(".")) //enablePlugins (Cinnamon)
 
 name := """saconf"""
 
@@ -34,10 +34,10 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion      % "test"
 
   // Adds monitoring capabilities to the project
-  ,
-  Cinnamon.library.cinnamonSandbox
+  //,
+  //Cinnamon.library.cinnamonSandbox
 )
 
-cinnamon in run := true
-cinnamon in test := true
+//cinnamon in run := true
+//cinnamon in test := true
 connectInput in run := true

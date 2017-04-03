@@ -11,6 +11,7 @@ import org.h3nk3.saconf.domain.{DroneCommandError, Position, SurveilArea}
 
 object DroneManager {
   def props: Props = Props[DroneManager]
+
   case class SurveillanceArea(lowerLeft: Position, upperRight: Position, coverage: Int = 0) extends Serializable
   case class Initiate(area: SurveillanceArea, numberOfDrones: Int) extends Serializable
   case object Initiating extends Serializable
@@ -37,7 +38,7 @@ class DroneManager extends Actor with ActorLogging {
       dividedAreas = divideAreas(area, numberOfDrones)
       log.info("DroneManager initiated. Switching to Running State.")
       sender() ! Initiating
-      context become runningState
+      context.become(runningState)
     case s =>
       log.warning(s"Unexpected command '$s' in state ready.")
   }
